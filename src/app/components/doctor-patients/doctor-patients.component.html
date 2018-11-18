@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row" style="margin:50px">
+    
+        <div class="col-md-8" >
+            <form  #frm="ngForm" (ngSubmit)="onSubmit(frm)">
+              <div class="row">
+                  <div class="col-md-6">
+                      <select class="custom-select d-block w-100" name="taluka" 
+                      required ngModel>
+                     <option value="bhubaneswar" selected >BHUBANESWAR</option>
+                     <option value="tangi">TANGI</option>
+                     <option value="banapur">BANAPUR</option>
+                     <option value="begunia">BEGUNIA</option>
+                     <option value="bolagarh">BOLAGARH</option>
+                     <option value="jatani">JATANI</option>
+                     </select>  
+                   </div>
+                   <div class="col-md-6">
+                      <button type="submit" [disabled]=frm.invalid
+                       class="btn btn-success btn-block">Submit</button>
+                   </div>
+              </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+            placeholder="Search Patient">
+        </div>
+  </div>
+</div>
+<hr>
+
+<table class="table table-striped">
+    <thead>
+      <tr class="bg-dark" style="color:#fff">
+        <th>Name</th>
+        <th>Villege</th>
+        <th>Mobile No</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients | filter:filter| paginate: { itemsPerPage: 10, currentPage: p };">
+        <td>{{patient.firstName | uppercase}} {{patient.lastName | uppercase}}</td>
+        <td>{{patient.villege | uppercase}}</td>
+        <td>{{patient.mobileNo}}</td>
+       
+        <td><a  class="btn btn-secondary btn-sm" [routerLink]="['/doctor/patientDetail/'+patient._id]">
+          <i class="fas fa-angle-double-right"></i>See Details</a>
+        </td>
+      </tr>
+    </tbody>
+   <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+
+  </table>

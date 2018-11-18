@@ -1,0 +1,32 @@
+
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+   <form  #frm="ngForm" (ngSubmit)="onSend(frm)">
+      <textarea rows="3" placeholder="Enter a message..." name="msg"
+      class="form-control" ngModel required></textarea>
+    <button style="margin-top:10px;"
+    class="btn btn-success btn-block" [disabled]=frm.invalid
+     type="submit">Send Messages
+  </button>
+   </form>
+  </div>
+</div>
+
+<table class="table table-striped" style="margin-top:10px">
+  <thead>
+    <tr class="bg-dark" style="color:#fff">
+      <th>Name</th>
+      <th>Villege</th>
+      <th>Mobile No</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | filter:filter| paginate: { itemsPerPage: 10, currentPage: p };">
+      <td>{{user.firstName | uppercase}} {{user.lastName | uppercase}}</td>
+      <td>{{user.villege | uppercase}}</td>
+      <td>{{user.mobileNo}}</td>
+    </tr>
+  </tbody>
+ <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+
+</table>

@@ -1,0 +1,189 @@
+<div class="container-fluid" style="margin-top:10px"> 
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4 offset-md-4">
+              <h3 style="font-weight:bold">SIGN UP</h3>
+          </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#user">USER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#doctor">DOCTOR</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#fcr">FCR</a>
+            </li>
+          </ul>
+          <br>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane container active" id="user">
+                <div class="row">
+                  <div class="col-md-4 offset-md-4">
+                      <img src='../../../assets/user.png' width="100px" height="100px">
+                  </div>
+                </div><hr>
+
+              <form novalidate #frm="ngForm" (ngSubmit)="onSubmitUser(frm)">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <label >Firstname</label>
+                          <input type="text" class="form-control" ngModel 
+                            placeholder="Firstname"  required name="firstName">
+                       </div>
+                       <div class="col-md-4">
+                          <label >Middlename</label>
+                          <input type="text" class="form-control" ngModel 
+                            placeholder="Middlename"  required name="middleName">
+                       </div> 
+                       <div class="col-md-4">
+                          <label >Lastname</label>
+                          <input type="text" class="form-control" ngModel 
+                            placeholder="lastname"  required name="lastName">
+                       </div>  
+                   </div><br>
+
+                   <div class="row">
+                     <div class="col-md-4">
+                        <label >District</label>
+                        <select class="custom-select d-block w-100" name="district" 
+                        required ngModel>
+                        <option value="khorda" selected >Khorda</option>
+                        </select>
+                     </div>
+
+                     <div class="col-md-4"> 
+                        <label >Taluka</label>
+                        <select class="custom-select d-block w-100" name="taluka" id='talukas' ngModel
+                         required #talukaSelected (change)="getVilleges(talukaSelected.value)">
+                        <option value="default" selected >Default</option>
+                        <option [value]="taluka" *ngFor="let taluka of talukas">{{taluka}}</option>
+                        </select>
+                     </div>
+
+                     <div class="col-md-4"> 
+                        <label >Villege</label>
+                        <select class="custom-select d-block w-100" name="villege" id="villeges"
+                        required ngModel>
+                        <option value="default" selected >Default</option>
+                        <option [value]="villege" *ngFor="let villege of villeges">{{villege}}</option>
+                        </select>
+                     </div>
+                   </div><br>
+
+                   <div class="row">
+                      <div class="col-md-6">
+                         <label >Aadhar No</label>
+                         <input type="text" class="form-control" ngModel 
+                           placeholder="Aadhar No"  required name="aadharNo" maxlength="12">      
+                      </div>
+                      <div class="col-md-6">
+                         <label >Mobile No </label>
+                         <input type="text" class="form-control" ngModel 
+                           placeholder="Mobile No"  required name="mobileNo" maxlength="10">
+                      </div>
+                    </div><br>
+
+                    <div class="row">
+                       <div class="col-md-12">
+                        <label >Password </label>
+                        <input type="password" class="form-control" ngModel 
+                          placeholder="Password"  required name="password">
+                       </div>
+                    </div><br>
+
+                    <button class="btn btn-success btn-block" type="submit" [disabled]=frm.invalid>Submit</button>
+              </form>
+
+           </div>
+              
+            <div class="tab-pane container fade" id="doctor">
+                <div class="row">
+                    <div class="col-md-4 offset-md-4">
+                        <img src='../../../assets/doctor .png' width="100px" height="100px">
+                    </div>
+                 </div><hr>
+          <form novalidate #frm1="ngForm" (ngSubmit)="onSubmitDoctor(frm1)">
+
+           <div class="row">
+             <div class="col-md-6">
+                <label >Firstname </label>
+                <input type="text" class="form-control" ngModel 
+                  placeholder="Firstname"  required name="firstName" >
+             </div>
+             <div class="col-md-6">
+                <label >Lastname </label>
+                <input type="text" class="form-control" ngModel 
+                  placeholder="Lastname"  required name="lastName" >
+              </div>
+           </div><br>
+
+           <div class="row">
+              <div class="col-md-12">
+                  <label >  UID </label>
+                  <input type="text" class="form-control" ngModel 
+                    placeholder="ID"  required name="uid" > 
+              </div>
+           </div><br>
+             <div class="row">
+                    <div class="col-md-12">
+                        <label >Password</label>
+                        <input type="password" class="form-control" ngModel 
+                          placeholder="password"  required name="password" >
+                    </div>
+              </div><br>
+
+          <button type="submit" class="btn btn-success btn-block" [disabled]=frm1.invalid>Submit</button>
+        
+          </form>      
+
+      </div>
+            <div class="tab-pane container fade" id="fcr">
+                <div class="row">
+                    <div class="col-md-4 offset-md-4">
+                        <img src='../../../assets/fcr.png' width="100px" height="100px">
+                    </div>
+                  </div> <hr> 
+                  <form novalidate #frm2="ngForm" (ngSubmit)="onSubmitFcr(frm2)">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                           <label >Firstname </label>
+                           <input type="text" class="form-control" ngModel 
+                             placeholder="Firstname"  required name="firstName" >
+                        </div>
+                        <div class="col-md-6">
+                           <label >Lastname </label>
+                           <input type="text" class="form-control" ngModel 
+                             placeholder="Lastname"  required name="lastName" >
+                         </div>
+                      </div><br>
+           
+                      <div class="row">
+                         <div class="col-md-12">
+                             <label >  UID </label>
+                             <input type="text" class="form-control" ngModel 
+                               placeholder="ID"  required name="uid" > 
+                         </div>
+                      </div><br>
+                        <div class="row">
+                               <div class="col-md-12">
+                                   <label >Password</label>
+                                   <input type="password" class="form-control" ngModel 
+                                     placeholder="password"  required name="password" >
+                               </div>
+                         </div><br>
+           
+                     <button type="submit" class="btn btn-success btn-block" [disabled]=frm2.invalid>Submit</button>
+                   
+                     </form>              
+             </div>
+          </div>
+    </div>
+     </div>
+    <div class="col-md-3"></div>
+  </div>

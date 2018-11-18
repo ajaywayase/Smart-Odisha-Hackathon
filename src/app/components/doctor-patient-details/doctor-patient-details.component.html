@@ -1,0 +1,60 @@
+<div class="row" >
+  <div class="col-md-1"></div>
+<div class="col-md-10 ">
+   <div class="card text-body"
+   style="border : 1px solid black">
+      <div class="card-header">
+       <div class="row">
+        <div class="col-md-6" style="font-weight: bold">
+          <span class="text-secondary">Name of Patient :</span> {{patient.firstName}} {{patient.lastName}}
+        </div>
+        <div class="col-md-3" style="font-weight: bold">
+          <span class="text-secondary">Mobile No :</span> {{patient.mobileNo}}
+        </div>
+        <div class="col-md-3" style="font-weight: bold">
+          <span class="text-secondary">Villege : </span>{{patient.villege | uppercase}}
+         </div>
+       </div>
+      </div>
+    <div class="card-body" style="height:55vh">
+      <br>
+      <div class="row">
+        <div class="col-md-4 offset-md-1">
+         <div class="row" style="font-weight: bold"> Diseases : </div>
+         <div class="row"></div>
+         <div class="row"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="row" *ngFor="let disease of patient.diseases;let i= index">{{ i+1}} :  {{disease | uppercase}}</div>
+        </div>
+      </div><hr><br>
+
+      <div class="row">
+        <div class="col-md-4 offset-md-1">
+           <div class="row" style="font-weight: bold"> Treatment Given : </div>
+           <div class="row" *ngFor="let treat of patient.treatment"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="row" *ngFor="let treat of patient.treatment ;let i= index">{{ i+1}} : {{treat}}</div>
+        </div>
+      </div><hr><br>
+    </div> 
+
+    <div class="card-footer" style="font-weight: bold">
+      <div class="row">
+       <div class="col-md-6">
+        Stay Healthy
+       </div>
+       <div class="col-md-6">
+          <label class="form-check-label" >
+              <input type="checkbox" class="form-check-input" 
+              name="cureornot" [checked]="patient.cure"
+               (click)="updatePatient(patient)">Mark As Cured
+            </label>
+       </div>
+      </div>
+    </div>
+   </div>
+</div>
+<div class="col-md-1"></div> 
+  </div>

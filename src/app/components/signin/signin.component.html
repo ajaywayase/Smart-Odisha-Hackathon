@@ -1,0 +1,134 @@
+<div class="container-fluid" style="margin-top:10px"> 
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <h3 style="font-weight:bold">SIGN IN</h3>
+            </div>
+          </div>
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#user">USER</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#doctor">DOCTOR</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#fcr">FCR</a>
+              </li>
+            </ul>
+            <br>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane container active" id="user">
+                  <div class="row">
+                    <div class="col-md-4 offset-md-4">
+                        <img src='../../../assets/user.png' width="100px" height="100px">
+                    </div>
+                  </div><hr>
+  
+                <form novalidate #frm="ngForm" (ngSubmit)="onSubmitUser(frm)">
+
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label >Mobile No</label>
+                          <input type="text" class="form-control" ngModel 
+                            placeholder="Mobile No"  required name="mobileNo">
+                      </div>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label >Password</label>
+                            <input type="password" class="form-control" ngModel 
+                              placeholder="Password"  required name="password">
+                        </div>
+                      </div><br>
+
+                      <button class="btn btn-success btn-block" type="submit" [disabled]=frm.invalid>Submit</button>
+                      <br>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <p>Haven't Registered Yet ? <a routerLink='/signup'>Sign Up</a></p>
+                        </div>
+                    </div>
+                </form>
+  
+             </div>
+                
+              <div class="tab-pane container fade" id="doctor">
+                  <div class="row">
+                      <div class="col-md-4 offset-md-4">
+                          <img src='../../../assets/doctor .png' width="100px" height="100px">
+                      </div>
+                   </div><hr>
+            <form novalidate #frm1="ngForm" (ngSubmit)="onSubmitDoctor(frm1)">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label >UID</label>
+                        <input type="text" class="form-control" ngModel 
+                          placeholder="UID"  required name="uid">
+                    </div>
+                  </div><br>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                          <label >Password</label>
+                          <input type="password" class="form-control" ngModel 
+                            placeholder="Password"  required name="password">
+                      </div>
+                    </div><br>
+            
+            <button type="submit" class="btn btn-success btn-block" [disabled]=frm1.invalid>Submit</button>
+            <br>
+            <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <p>Haven't Registered Yet ? <a routerLink='/signup'>Sign Up</a></p>
+                    </div>
+             </div>
+
+            </form>      
+  
+        </div>
+              <div class="tab-pane container fade" id="fcr">
+                  <div class="row">
+                      <div class="col-md-4 offset-md-4">
+                          <img src='../../../assets/fcr.png' width="100px" height="100px">
+                      </div>
+                    </div> <hr> 
+                    <form novalidate #frm2="ngForm" (ngSubmit)="onSubmitFcr(frm2)">
+  
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label >UID</label>
+                                <input type="text" class="form-control" ngModel 
+                                  placeholder="UID"  required name="uid">
+                            </div>
+                          </div><br>
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <label >Password</label>
+                                  <input type="password" class="form-control" ngModel 
+                                    placeholder="Password"  required name="password">
+                              </div>
+                            </div><br>
+             
+                       <button type="submit" class="btn btn-success btn-block" [disabled]=frm2.invalid>Submit</button>
+                        <br>
+                       <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <p>Haven't Registered Yet ? <a routerLink='/signup'>Sign Up</a></p>
+                            </div>
+                    </div>
+                       
+                    </form>              
+               </div>
+            </div>
+      </div>
+       </div>
+      <div class="col-md-3"></div>
+    </div>
+  

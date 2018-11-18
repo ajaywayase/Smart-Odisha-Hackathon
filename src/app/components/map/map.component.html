@@ -1,0 +1,67 @@
+<div class="row" >
+
+  <div class="col-md-6 offset-md-3">
+    <form #frm="ngForm" (ngSubmit)="onSubmit(frm)">
+      <div class="row">
+          <div class="col-md-4">
+              <select class="custom-select d-block w-100" name="taluka" 
+              required ngModel>
+             <option value="bhubaneswar" selected >BHUBANESWAR</option>
+             <option value="tangi">TANGI</option>
+             <option value="banapur">BANAPUR</option>
+             <option value="begunia">BEGUNIA</option>
+             <option value="bolagarh">BOLAGARH</option>
+             <option value="jatani">JATANI</option>
+             </select>
+            </div>
+        <div class="col-md-4">
+          <select class="custom-select d-block w-100" name="disease" 
+          required ngModel>
+         <option value="asthma" selected >Asthma</option>
+         <option value="chronic kidney disease">Kidney Disease</option>
+         <option value="chronic lung disease">Lung Disease</option>
+         <option value="diabetes">Diabetes</option>
+         <option value="heart disease">Heart Disease</option>
+         <option value="hypertension">Hypertension</option>
+         <option value="cancer">Cancer</option>
+         </select>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-success btn-block">Submit</button>
+        </div>
+      </div>
+    </form>
+  
+  </div>
+
+</div>
+
+<div class="row"  style="margin-top : 40px">
+  <div class="col-md-6 offset-md-3">
+    
+        <h2> Patients:<span class="badge badge-danger" style="margin:5px"> Above 500 </span><span class="badge badge-warning" style="margin:5px"> Above 100 </span><span class="badge badge-success" style="margin:5px"> Below 100 </span></h2>
+        
+  </div>
+</div>
+
+
+<div  style="margin-top : 60px">
+  <agm-map [latitude]="latitude" [longitude]="longitude" 
+   (mapClick)="onChoseLocation($event)">
+  
+    <agm-marker
+      [latitude]="latitude"
+      [longitude]="longitude"
+      *ngIf="locationChosen">
+    </agm-marker>
+  
+    <agm-circle 
+      [latitude]="lat"
+      [longitude]="lng"
+      [fillColor]="color"
+      [radius]="radius">
+  </agm-circle>
+    
+  </agm-map>
+  
+</div>

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <nav id="sidebar" class="navbar-dark bg-dark">
+      <div id="dismiss">
+          <i class="fas fa-arrow-left"></i>
+      </div>
+    
+   
+      <div class="sidebar-header bg-dark">
+          <h3>DOCTOR</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>SIDEBAR OPTIONS</span>
+          <a class="d-flex align-items-center text-muted" >
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+    <ul class="nav flex-column ">
+      <li class="nav-item " >
+        <a   class="nav-link bg-dark" routerLink='/doctor'>
+          <span data-feather="home"></span>
+          Home<span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item " >
+          <a   class="nav-link bg-dark" routerLink='/doctor/campaigns' >
+            <span data-feather="home"></span>
+            See Campaigns<span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item " >
+            <a   class="nav-link bg-dark" routerLink='/doctor/patients' >
+              <span data-feather="home"></span>
+              See Patients<span class="sr-only">(current)</span>
+            </a>
+          </li>
+        <li class="nav-item " >
+          <a   class="nav-link bg-dark" routerLink='/doctor/map' >
+            <span data-feather="home"></span>
+            Map<span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item " >
+          <a   class="nav-link bg-dark" routerLink='/doctor/graph' >
+            <span data-feather="home"></span>
+            Graph<span class="sr-only">(current)</span>
+          </a>
+        </li>
+    </ul>
+   </ul>  
+    </nav>
+</div>
+</div>
+   <main role="main" class="col-md-12  container-fluid" style="margin-top:2rem">
+      <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,291 @@
+<div class="row">
+<div class="col-md-6 " *ngIf='!toggleForm' >
+        <h4 class="mb-3">Add Campaign</h4>
+         <hr>
+        <form  novalidate #frm="ngForm" 
+        (ngSubmit)="onSubmit(frm)">
+
+        <div class="row">
+          <div class="col-md-12">
+            <label >Name of Campaign</label>
+            <input type="text" class="form-control" ngModel
+              placeholder="Name of Campaign"  required name="nameOfCampaign">
+          </div>
+        </div>
+        <br>
+    
+        <div class="row">
+
+          <div class="col-md-4 mb-3">
+            <label> Start Date of Campaign</label>
+            <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="yyyy-mm-dd"
+                             name="startDate" [(ngModel)]="startDate" ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-success calendar" (click)="d.toggle()" type="button"></button>
+                      </div>
+                    </div>
+             </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+                <label>End Date of Campaign</label>
+                <div class="form-group">
+                        <div class="input-group">
+                          <input class="form-control" placeholder="yyyy-mm-dd"
+                                 name="endDate" [(ngModel)]="endDate" ngbDatepicker #d1="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-success calendar" (click)="d1.toggle()" type="button"></button>
+                          </div>
+                        </div>
+                 </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                    <label >Time</label>
+                    <input type="time" class="form-control" ngModel
+                      placeholder="Time"  required name="time">
+             </div>
+
+        </div>
+    
+         <div class="row">
+
+            <div class="col-md-4 mb-3">
+              <label >Disease Name</label>
+               <select class="custom-select d-block w-100" name="disease1" 
+               required ngModel>
+              <option value="asthma" selected >Asthma</option>
+              <option value="chronic kidney disease">Kidney Disease</option>
+              <option value="chronic lung disease">Lung Disease</option>
+              <option value="diabetes">Diabetes</option>
+              <option value="heart disease">Heart Disease</option>
+              <option value="hypertension">Hypertension</option>
+              <option value="cancer">Cancer</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                    <label >Disease Name</label>
+                    <select class="custom-select d-block w-100" name="disease2" ngModel
+                     >
+                   <option value="asthma" selected >Asthma</option>
+                   <option value="chronic kidney disease">Kidney Disease</option>
+                   <option value="chronic lung disease">Lung Disease</option>
+                   <option value="diabetes">Diabetes</option>
+                   <option value="heart disease">Heart Disease</option>
+                   <option value="hypertension">Hypertension</option>
+                   <option value="cancer">Cancer</option>
+                   </select>
+             </div>
+
+             <div class="col-md-4 mb-3">
+                    <label >Disease Name</label>
+                    <select class="custom-select d-block w-100" name="disease3" 
+                    ngModel>
+                    <option value="asthma" selected >Asthma</option>
+                    <option value="chronic kidney disease">Kidney Disease</option>
+                    <option value="chronic lung disease">Lung Disease</option>
+                    <option value="diabetes">Diabetes</option>
+                    <option value="heart disease">Heart Disease</option>
+                    <option value="hypertension">Hypertension</option>
+                    <option value="cancer">Cancer</option>
+                    </select>
+             </div>
+
+          </div>
+
+          <div class="row">
+                <div class="col-md-12">
+                        <label >Location</label>
+                        <select class="custom-select d-block w-100" name="location" ngModel
+                        required >
+                        <option [value]='hospital' *ngFor="let hospital of hospitalList" >{{hospital | uppercase}}</option>
+                        </select>
+                </div>
+          </div>
+          <br>
+            <div class="mb-3">
+              <label >Description about Campaign</label>
+              <div class="input-group">
+                <textarea  class="form-control" rows="7"
+                ngModel name="description" required></textarea>
+              </div>
+            </div> 
+    
+            <button type="submit" class="btn btn-success btn-block"
+            [disabled]=frm.invalid >Submit</button> 
+        </form>
+ </div>
+
+ <!--Edit Campaign-->
+
+ <div class="col-md-6" *ngIf='toggleForm'>
+  <h4 class="mb-3">Update Campaign</h4>
+  <hr>
+
+<form  novalidate #frm1="ngForm" *ngIf='toggleForm'
+ (ngSubmit)="updateCampaign(frm1)">
+
+ <div class="row">
+   <div class="col-md-12">
+     <label >Name of Campaign</label>
+     <input type="text" class="form-control" [ngModel]='selectedCampaign.nameOfCampaign'
+       placeholder="Name of Campaign"  required name="nameOfCampaign">
+   </div>
+ </div>
+ <br>
+
+ <div class="row">
+
+   <div class="col-md-4 mb-3">
+     <label> Start Date of Campaign</label>
+     <div class="form-group">
+             <div class="input-group">
+               <input class="form-control" placeholder="yyyy-mm-dd"
+                      name="startDate" [ngModel]="selectedCampaign.startDate" ngbDatepicker #d="ngbDatepicker">
+               <div class="input-group-append">
+                 <button class="btn btn-success calendar" (click)="d.toggle()" type="button"></button>
+               </div>
+             </div>
+      </div>
+   </div>
+
+   <div class="col-md-4 mb-3">
+         <label>End Date of Campaign</label>
+         <div class="form-group">
+                 <div class="input-group">
+                   <input class="form-control" placeholder="yyyy-mm-dd"
+                          name="endDate" [ngModel]="selectedCampaign.endDate" ngbDatepicker #d1="ngbDatepicker">
+                   <div class="input-group-append">
+                     <button class="btn btn-success calendar" (click)="d1.toggle()" type="button"></button>
+                   </div>
+                 </div>
+          </div>
+     </div>
+
+     <div class="col-md-4 mb-3">
+             <label >Time</label>
+             <input type="time" class="form-control" [ngModel]='selectedCampaign.time'
+               placeholder="Time"  required name="time">
+      </div>
+
+ </div>
+
+  <div class="row">
+
+     <div class="col-md-4 mb-3">
+       <label >Disease Name</label>
+        <select class="custom-select d-block w-100" name="disease1" 
+        required [ngModel]='selectedCampaign.disease1'>
+       <option value="asthma" selected >Asthma</option>
+       <option value="chronic kidney disease">Kidney Disease</option>
+       <option value="chronic lung disease">Lung Disease</option>
+       <option value="diabetes">Diabetes</option>
+       <option value="heart disease">Heart Disease</option>
+       <option value="hypertension">Hypertension</option>
+       <option value="cancer">Cancer</option>
+       </select>
+     </div>
+
+     <div class="col-md-4 mb-3">
+             <label >Disease Name</label>
+             <select class="custom-select d-block w-100" name="disease2"
+             [ngModel]='selectedCampaign.disease2' >
+            <option value="asthma" selected >Asthma</option>
+            <option value="chronic kidney disease">Kidney Disease</option>
+            <option value="chronic lung disease">Lung Disease</option>
+            <option value="diabetes">Diabetes</option>
+            <option value="heart disease">Heart Disease</option>
+            <option value="hypertension">Hypertension</option>
+            <option value="cancer">Cancer</option>
+            </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+             <label >Disease Name</label>
+             <select class="custom-select d-block w-100" name="disease3" 
+             [ngModel]='selectedCampaign.disease3'>
+             <option value="asthma" selected >Asthma</option>
+             <option value="chronic kidney disease">Kidney Disease</option>
+             <option value="chronic lung disease">Lung Disease</option>
+             <option value="diabetes">Diabetes</option>
+             <option value="heart disease">Heart Disease</option>
+             <option value="hypertension">Hypertension</option>
+             <option value="cancer">Cancer</option>
+             </select>
+      </div>
+
+   </div>
+
+   <div class="row">
+         <div class="col-md-12">
+                 <label >Location</label>
+                 <select class="custom-select d-block w-100" name="location" [ngModel]='selectedCampaign.location'
+                 required >
+                 <option [value]='hospital' *ngFor="let hospital of hospitalList" >{{hospital | uppercase}}</option>
+                 </select>
+         </div>
+   </div>
+   <br>
+     <div class="mb-3">
+       <label >Description about Campaign</label>
+       <div class="input-group">
+         <textarea  class="form-control" rows="7"
+         [ngModel]='selectedCampaign.description' name="description" required></textarea>
+       </div>
+     </div> 
+
+     <button type="submit" class="btn btn-success btn-block"
+     [disabled]=frm1.invalid >Save Changes</button> 
+ </form>
+ </div>
+
+<!-- List Of Campaigns-->
+
+ <div class="col-md-6  ">
+ <div  >
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Campaigns Added</span>
+     <span>
+      <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+      placeholder="Search Campaign">
+     </span>
+      <span class="badge badge-secondary badge-pill">{{campaignList.length}}</span>
+    </h4>
+
+    <ul class="list-group "
+     *ngFor="let campaign of campaignList | filter:filter | paginate: { itemsPerPage: 7, currentPage: p }; let i = index">
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0" style="font-weight:bold;">{{campaign.nameOfCampaign}}</h6>
+          <small class="text-muted">Date : {{campaign.startDate.day}}/{{campaign.startDate.month}}/{{campaign.startDate.year}}</small>
+        </div>
+        <div class="row">
+        <div style="margin-right:10px">
+          <button (click)="editCampaign(campaign)" class="btn btn-info btn-sm"
+          [disabled]="toggleForm" >Edit</button>
+        </div>
+        <div style="margin-right:10px">
+          <button (click)="deleteCampaign(campaign._id)" class="btn btn-danger btn-sm"
+           >Delete</button>
+        </div>
+        <div style="margin-right:30px">
+          <button  class="btn btn-success btn-sm"
+           (click)="downloadPDF(campaign)">PDF</button>
+        </div>
+        <div >
+          <label class="form-check-label" >
+            <input type="checkbox" class="form-check-input" 
+            name="showCampaign" [checked]="campaign.showCampaign"
+             (click)="updateShowCampaign(campaign)">Show
+          </label>
+        </div>
+      </div> 
+      </li>
+    </ul>
+   <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+  </div> 
+</div>
+</div>
