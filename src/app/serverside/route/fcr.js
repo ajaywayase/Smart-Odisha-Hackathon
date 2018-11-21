@@ -164,7 +164,7 @@ router.get('/getUsers/:taluka',async(req,res)=>{
 
 router.post('/sendMessages',async(req,res)=>{
 
-    const twilio = require('twilio')('AC71b131cf19d866871889af07e97ca213','b51891b5ece92bb1718f4b38a3862c9a');
+    const twilio = require('twilio')(account sid, auth token );
 
    
     let numbers = [];
@@ -176,7 +176,7 @@ router.post('/sendMessages',async(req,res)=>{
         numbers.map(number => {
         return twilio.messages.create({
             to: number,
-            from:'+12172866559' ,
+            from: phoneNo ,
             body: req.body.msg
         });
         })
